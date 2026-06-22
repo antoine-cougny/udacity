@@ -7,9 +7,13 @@ jobs:
   build:
     docker:
       # the base image can run most needed actions with orbs
-      - image: "cimg/node:20.19"
+      - image: "cimg/base:stable"
     steps:
       - node/install
+      - run:
+          name: Install Yarn
+          command: |
+            npm install -g yarn
       - checkout
       # install dependencies in both apps
       - run:
